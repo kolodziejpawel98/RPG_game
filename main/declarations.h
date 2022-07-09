@@ -8,47 +8,48 @@
 #endif
 #undef max
 #undef min
+#include "hero.h"
 #include <vector>
 #include <memory>
 
-class Hero{
-    public:
-        int attack;
-        int defence;
-        char name;
-        Hero(int attack, int defence, char name): attack(attack), defence(defence), name(name) {}
-        bool operator==(const Hero* hero) const{
-            return attack == hero->attack and defence == hero->defence;
-        }
-        // virtual void specialAction() = 0;
-};
+//############################################################
 
-class Warrior : public Hero{
-    public:
-        Warrior(int attack, int defence, char name) : Hero(attack, defence, name) {}
-};
-
-class Thief : public Hero{
-    public:
-        Thief(int attack, int defence, char name) : Hero(attack, defence, name) {}
-};
-
+String menuHeroName = "";
+const int MENU_HERO_CHOOSING = 1;
+const int MAP = 2;
+const int* actualScreen = &MENU_HERO_CHOOSING;
 std::vector<Hero*>heroes = {new Warrior(5,10,'w'), new Thief(13,2, 't')};
 Hero* currentHero = heroes[0];
 
-/*
-std::vector<Hero*>heroes = {new Hero(1, 2, 'b'), new Hero(3, 5, 'a')};
-Hero* currentHero = heroes[0];
-*/
-
-
 void nextHero(){
-    if(currentHero == heroes[0]){ //if adres wskznika HERO == wk
+    if(currentHero == heroes[0]){
       currentHero = heroes[1];
     }else if(currentHero == heroes[1]){
       currentHero = heroes[0];
     }
 }
+
+void buttonListener(){
+  if (gb.buttons.pressed(BUTTON_LEFT)) {
+    gb.display.setColor(GREEN);
+    nextHero();
+  }else if(gb.buttons.pressed(BUTTON_RIGHT)){
+    gb.display.setColor(GREEN);
+    nextHero();
+  }else if(gb.buttons.pressed(BUTTON_A)){
+    actualScreen = &MAP;
+  }
+}
+
+String charToArduinoString(char character){ //that's because arduino has problems with std::string
+  if(character == 'w'){
+    menuHeroName = "warrior";
+  }else if(character == 't'){
+    menuHeroName = "thief";
+  }
+  return menuHeroName;
+}
+
 
 #endif
 
