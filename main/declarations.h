@@ -8,17 +8,22 @@
 #endif
 #undef max
 #undef min
-#include "hero.h"
 #include <vector>
 #include <memory>
-
+#include "hero.h"
 //############################################################
 
-String menuHeroName = "";
-const int MENU_HERO_CHOOSING = 1;
-const int MAP = 2;
-const int* actualScreen = &MENU_HERO_CHOOSING;
-std::vector<Hero*>heroes = {new Warrior(5,10,'w'), new Thief(13,2, 't')};
+String menuHeroName = "";//????????????
+// const int MENU_HERO_CHOOSING = 1;
+// const int MAP = 2; //enum tu dac
+
+enum gameScreens{
+    HERO_CHOOSING,
+    MAP
+}gameScreen;
+
+// const int* actualScreen = &GAME_SCREEN;
+std::vector<Hero*>heroes = {new Warrior(5,10,"warrior"), new Thief(13,2, "thief")};
 Hero* currentHero = heroes[0];
 
 void nextHero(){
@@ -37,19 +42,9 @@ void buttonListener(){
     gb.display.setColor(GREEN);
     nextHero();
   }else if(gb.buttons.pressed(BUTTON_A)){
-    actualScreen = &MAP;
+    gameScreen = MAP;
   }
 }
-
-String charToArduinoString(char character){ //that's because arduino has problems with std::string
-  if(character == 'w'){
-    menuHeroName = "warrior";
-  }else if(character == 't'){
-    menuHeroName = "thief";
-  }
-  return menuHeroName;
-}
-
 
 #endif
 
