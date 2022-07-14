@@ -9,29 +9,21 @@
 #undef max
 #undef min
 #include <vector>
-#include <memory>
 #include "hero.h"
-//############################################################
-
-String menuHeroName = "";//????????????
-// const int MENU_HERO_CHOOSING = 1;
-// const int MAP = 2; //enum tu dac
+#include <map>
 
 enum gameScreens{
     HERO_CHOOSING,
     MAP
 }gameScreen;
 
-// const int* actualScreen = &GAME_SCREEN;
 std::vector<Hero*>heroes = {new Warrior(5,10,"warrior"), new Thief(13,2, "thief")};
-Hero* currentHero = heroes[0];
+auto currentHero = heroes.begin();
 
 void nextHero(){
-    if(currentHero == heroes[0]){
-      currentHero = heroes[1];
-    }else if(currentHero == heroes[1]){
-      currentHero = heroes[0];
-    }
+    ++currentHero;
+    if(currentHero == heroes.end())
+        currentHero = heroes.begin();
 }
 
 void buttonListener(){

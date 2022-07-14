@@ -12,23 +12,23 @@
 
 class Hero{
     public:
-        int attack;
-        int defence;
+        uint8_t attack;
+        uint8_t defence;
         String name;
-        Hero(int attack, int defence, String name);
+        Hero(uint8_t attack, uint8_t defence, String name);
         bool operator==(const Hero* hero) const;
         virtual String specialSkill() = 0;
 };
 
 class Warrior : public Hero{
     public:
-        Warrior(int attack, int defence, String name);
+        Warrior(uint8_t attack, uint8_t defence, String name);
         String specialSkill();
 };
 
 class Thief : public Hero{
     public:
-        Thief(int attack, int defence, String name);
+        Thief(uint8_t attack, uint8_t defence, String name);
         String specialSkill();
 };
 
