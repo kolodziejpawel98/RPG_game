@@ -10,11 +10,11 @@ void setup() {
 void loop() {
   while(!gb.update());
   gb.display.clear();
+  buttonListener();
   if(gameScreen == HERO_CHOOSING){
     gb.display.setCursor(13, 5);
     gb.display.println("Choose Your\n    fighter!");
     gb.display.setColor(WHITE);
-    buttonListener();
     gb.display.setCursor(26, 32);
     gb.display.println((*currentHero)->name);
     gb.display.setColor(WHITE);
@@ -26,7 +26,7 @@ void loop() {
     gb.display.setCursor(13, 96);
     gb.display.println("Special skill: " + (*currentHero)->specialSkill());
   }else if(gameScreen == MAP){
-    gb.display.println("!!MAP!");
+    gb.display.drawRect(heroMapCoordinates::x, heroMapCoordinates::y, 8, 8);
   }
 }
 
