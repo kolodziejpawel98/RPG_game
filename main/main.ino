@@ -26,7 +26,7 @@ void loop() {
     gb.display.setCursor(13, 96);
     gb.display.println("Special skill: " + (*currentHero)->specialSkill());
   }else if(gameScreen == MAP){
-    gb.display.drawRect(heroMapCoordinates::x, heroMapCoordinates::y, 8, 8);
+    gb.display.drawRect(heroMapCoordinates::x, heroMapCoordinates::y, heroMapCoordinates::width, heroMapCoordinates::height);
   }
 }
 
