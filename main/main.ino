@@ -53,7 +53,7 @@ void loop() {
     gb.display.setCursor(13, 19);
     gb.display.printf("1 2 3 4 5 6 7 8 9 0 10:");
     gb.display.setCursor(13, 34);
-    gb.display.printf("Special skill:");
+    // gb.display.printf("Special skill:");
     // gb.display.drawRect(heroMapCoordinates::x, heroMapCoordinates::y, heroMapCoordinates::width, heroMapCoordinates::height);
   }
 }

@@ -14,7 +14,8 @@ class Hero{
         uint8_t attack;
         uint8_t defence;
         String name;
-        Hero(uint8_t attack, uint8_t defence, String name);
+        const uint16_t *currentAvatar;
+        Hero(uint8_t attack, uint8_t defence, String name, const uint16_t *currentAvatar);
         bool operator==(const Hero* hero) const;
         virtual String specialSkill() = 0;
         virtual void drawHeroInfo() = 0;

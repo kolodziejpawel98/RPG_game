@@ -12,35 +12,35 @@
 
 class Gunner : public Hero{
     public:
-        Gunner(uint8_t attack, uint8_t defence, String name);
+        Gunner(const uint16_t *currentAvatar);
         String specialSkill() override;
         void drawHeroInfo() override;
 };
 
 class Sniper : public Hero{
     public:
-        Sniper(uint8_t attack, uint8_t defence, String name);
+        Sniper(const uint16_t *currentAvatar);
         String specialSkill() override;
         void drawHeroInfo() override;
 };
 
 class Stalker : public Hero{
     public:
-        Stalker(uint8_t attack, uint8_t defence, String name);
+        Stalker(const uint16_t *currentAvatar);
         String specialSkill() override;
         void drawHeroInfo() override;
 };
 
 class Pope : public Hero{
     public:
-        Pope(uint8_t attack, uint8_t defence, String name);
+        Pope(const uint16_t *currentAvatar);
         String specialSkill() override;
         void drawHeroInfo() override;
 };
 
 class Hacker : public Hero{
     public:
-        Hacker(uint8_t attack, uint8_t defence, String name);
+        Hacker(const uint16_t *currentAvatar);
         String specialSkill() override;
         void drawHeroInfo() override;
 };

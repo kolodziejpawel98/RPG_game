@@ -34,11 +34,13 @@ enum gameScreens{
     MAP
 }gameScreen;
 
-std::vector<Hero*>heroes = {new Gunner(4, 4, "gunner"),
-                            new Sniper(8, 0, "sniper"),
-                            new Pope(5, 3, "pope"),
-                            new Hacker(6, 2, "hacker"),
-                            new Stalker(0, 8, "stalker")
+Image avatar();
+
+std::vector<Hero*>heroes = {new Gunner(startAvatarGunnerCode),
+                            new Sniper(startAvatarSniperCode),
+                            new Pope(startAvatarPopeCode),
+                            new Hacker(startAvatarHackerCode),
+                            new Stalker(startAvatarStalkerCode)
 };
 // std::vector<Hero*> xd = {new Ghul(1,2,"f")};
 auto currentHero = heroes.begin();
@@ -50,11 +52,20 @@ void nextHero(){
         currentHero = heroes.begin();
 }
 
+void previousHero(){
+    //first hero & leftarrow = bug!!!!!!!
+    if(currentHero == heroes.begin()){
+        currentHero = heroes.end();
+    }else{
+        --currentHero;
+    }
+}
+
 void buttonListener(){
     switch(gameScreen){
         case HERO_CHOOSING:
             if (gb.buttons.pressed(BUTTON_LEFT)) {
-                nextHero();
+                previousHero();
             }else if(gb.buttons.pressed(BUTTON_RIGHT)){
                 nextHero();
             }else if(gb.buttons.pressed(BUTTON_A)){
@@ -84,6 +95,7 @@ void buttonListener(){
 }
 
 void drawHeroInfo(){
+    Image avatar((*currentHero)->currentAvatar);
     uint8_t move = 0;
     gb.display.setColor(WHITE);
     gb.display.setCursor(13, 13);
@@ -105,18 +117,8 @@ void drawHeroInfo(){
     }
     gb.display.drawImage(4, 12, startLeftArrowDefault);
     gb.display.drawImage(44, 12, startRightArrowDefault);
-    
-    if((*currentHero)->name == "gunner"){
-        gb.display.drawImage(54, 2, startAvatarGunner);
-    }else if((*currentHero)->name == "sniper"){
-        gb.display.drawImage(54, 2, startAvatarSniper);
-    }else if((*currentHero)->name == "pope"){
-        gb.display.drawImage(54, 2, startAvatarPope);
-    }else if((*currentHero)->name == "hacker"){
-        gb.display.drawImage(54, 2, startAvatarHacker);
-    }else if((*currentHero)->name == "stalker"){
-        gb.display.drawImage(54, 2, startAvatarStalker);
-    }
+
+    gb.display.drawImage(54, 2, avatar);
 }
 
 #endif
