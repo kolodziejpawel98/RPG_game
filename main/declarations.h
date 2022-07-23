@@ -22,8 +22,10 @@ namespace heroMapCoordinates{
 }
 
 namespace screenDimension{
-    const uint8_t width = 160;
-    const uint8_t height = 128;
+    const uint8_t highResWidth = 160;
+    const uint8_t highResHeight = 128;
+    const uint8_t lowResWidth = 80;
+    const uint8_t lowResHeight = 64;
 }
 
 enum gameScreens{
@@ -31,8 +33,13 @@ enum gameScreens{
     MAP
 }gameScreen;
 
-std::vector<Hero*>heroes = {new Warrior(5, 10, "warrior"), new Thief(13, 2, "thief")};
-// std::vector<Hero*>enemies = {new Troll(1, 2, "troll"), new Ghul(2, 3, "ghul")};
+std::vector<Hero*>heroes = {new Gunner(7, 3, "gunner"),
+                            new Sniper(10, 0, "sniper"),
+                            new Pope(6, 9, "pope"),
+                            new Hacker(5, 5, "hacker"),
+                            new Stalker(1, 9, "stalker")
+};
+// std::vector<Hero*> xd = {new Ghul(1,2,"f")};
 auto currentHero = heroes.begin();
 // auto currentEnemy = enemies.begin();
 
@@ -41,12 +48,6 @@ void nextHero(){
     if(currentHero == heroes.end())
         currentHero = heroes.begin();
 }
-
-// void nextEnemy(){
-//     ++currentEnemy;
-//     if(currentEnemy == enemies.end())
-//         currentEnemy = enemies.begin();
-// }
 
 void buttonListener(){
     switch(gameScreen){
@@ -67,7 +68,7 @@ void buttonListener(){
                     heroMapCoordinates::x--;
                 }
             }else if(gb.buttons.repeat(BUTTON_RIGHT, 0)){
-                if( heroMapCoordinates::x + 1 + heroMapCoordinates::width <= screenDimension::width){
+                if( heroMapCoordinates::x + 1 + heroMapCoordinates::width <= screenDimension::highResWidth){
                     heroMapCoordinates::x++;
                 }
             }else if(gb.buttons.repeat(BUTTON_UP, 0)){
@@ -75,7 +76,7 @@ void buttonListener(){
                     heroMapCoordinates::y--;
                 }
             }else if(gb.buttons.repeat(BUTTON_DOWN, 0)){
-                if( heroMapCoordinates::y + 1 + heroMapCoordinates::height <= screenDimension::height){
+                if( heroMapCoordinates::y + 1 + heroMapCoordinates::height <= screenDimension::highResHeight){
                     heroMapCoordinates::y++;
                 }
             }

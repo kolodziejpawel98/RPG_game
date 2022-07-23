@@ -1,13 +1,51 @@
 #include "heroes.h"
 
-Warrior::Warrior(uint8_t attack, uint8_t defence, String name) : Hero(attack, defence, name) {}
+Sniper::Sniper(uint8_t attack, uint8_t defence, String name) : Hero(attack, defence, name) {}
 
-String Warrior::specialSkill(){
+String Sniper::specialSkill(){
     return "big bang";
 }
 
-Thief::Thief(uint8_t attack, uint8_t defence, String name) : Hero(attack, defence, name) {}
+void Sniper::drawHeroInfo(){
 
-String Thief::specialSkill(){
+}
+
+Pope::Pope(uint8_t attack, uint8_t defence, String name) : Hero(attack, defence, name) {}
+
+String Pope::specialSkill(){
     return "sticky fingers";
+}
+
+void Pope::drawHeroInfo(){
+    
+}
+
+Stalker::Stalker(uint8_t attack, uint8_t defence, String name) : Hero(attack, defence, name) {}
+
+String Stalker::specialSkill(){
+    return "sticky fingers";
+}
+
+void Stalker::drawHeroInfo(){
+    
+}
+
+Gunner::Gunner(uint8_t attack, uint8_t defence, String name) : Hero(attack, defence, name) {}
+
+String Gunner::specialSkill(){
+    return "sticky fingers";
+}
+
+void Gunner::drawHeroInfo(){
+    
+}
+
+Hacker::Hacker(uint8_t attack, uint8_t defence, String name) : Hero(attack, defence, name) {}
+
+String Hacker::specialSkill(){
+    return "sticky fingers";
+}
+
+void Hacker::drawHeroInfo(){
+    gb.display.printf("xddddd");
 }
