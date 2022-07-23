@@ -47,5 +47,5 @@ String Hacker::specialSkill(){
 }
 
 void Hacker::drawHeroInfo(){
-    gb.display.printf("xddddd");
+    
 }

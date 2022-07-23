@@ -18,6 +18,8 @@ class Hero{
         bool operator==(const Hero* hero) const;
         virtual String specialSkill() = 0;
         virtual void drawHeroInfo() = 0;
+        // virtual uint8_t getAttack() = 0;
+        // virtual uint8_t getDefence() = 0;
 };
 
 #endif
