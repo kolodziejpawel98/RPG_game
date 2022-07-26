@@ -3,6 +3,7 @@
 
 #if defined(ARDUINO) && ARDUINO >= 100
 	#include "arduino.h"
+    #include <Gamebuino-Meta.h>
 #else
 	#include "WProgram.h"
 #endif
@@ -415,18 +416,18 @@ const uint16_t startLeftArrowActivatedCode[] = {
     0xf81f, 0xf81f, 0xf81f, 0x73aa, 0xf81f
 
 };
-Image startBackground(startBackgroundCode);
-Image startSkillBar(startSkillBarCode);
-Image startSkillCell(startSkillCellCode);
-Image startAvatarStalker(startAvatarStalkerCode);
-Image startAvatarSniper(startAvatarSniperCode);
-Image startAvatarPope(startAvatarPopeCode);
-Image startAvatarHacker(startAvatarHackerCode);
-Image startAvatarGunner(startAvatarGunnerCode);
-Image startRightArrowDefault(startRightArrowDefaultCode);
-Image startRightArrowActivated(startRightArrowActivatedCode);
-Image startLeftArrowDefault(startLeftArrowDefaultCode);
-Image startLeftArrowActivated(startLeftArrowActivatedCode);
 
+extern Image startBackground;
+extern Image startSkillBar;
+extern Image startSkillCell;
+extern Image startAvatarStalker;
+extern Image startAvatarSniper;
+extern Image startAvatarPope;
+extern Image startAvatarHacker;
+extern Image startAvatarGunner;
+extern Image startRightArrowDefault;
+extern Image startRightArrowActivated;
+extern Image startLeftArrowDefault;
+extern Image startLeftArrowActivated;
 #endif
 

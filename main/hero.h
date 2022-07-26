@@ -1,13 +1,14 @@
-#ifndef _HERO_h
-#define _HERO_h
+#pragma once
 
 #if defined(ARDUINO) && ARDUINO >= 100
 	#include "arduino.h"
+    #include <Gamebuino-Meta.h>
 #else
 	#include "WProgram.h"
 #endif
 #undef max
 #undef min
+#include "graphics.h"
 
 class Hero{
     public:
@@ -17,10 +18,6 @@ class Hero{
         const uint16_t *currentAvatar;
         Hero(uint8_t attack, uint8_t defence, String name, const uint16_t *currentAvatar);
         bool operator==(const Hero* hero) const;
-        virtual String specialSkill() = 0;
-        virtual void drawHeroInfo() = 0;
-        // virtual uint8_t getAttack() = 0;
-        // virtual uint8_t getDefence() = 0;
+        virtual void specialSkill() = 0;
+        void drawHeroElements();
 };
-
-#endif
