@@ -9,13 +9,12 @@
 #undef min
 #include "heroes.h"
 #include "graphics.h"
-// #include "heroes.h"
 
-// Image avatar();
 void startGame();
 void nextHero();
 void previousHero();
 void buttonListener();
 void drawHeroInfo();
+void mapMoving();
 
 

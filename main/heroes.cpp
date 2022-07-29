@@ -1,10 +1,34 @@
 #include "heroes.h"
 // #include <Gamebuino-Meta.h>
 
+std::vector<Hero*>heroes = {
+                            new Gunner(startAvatarGunnerCode),
+                            new Sniper(startAvatarSniperCode),
+                            new Pope(startAvatarPopeCode),
+                            new Hacker(startAvatarHackerCode),
+                            new Stalker(startAvatarStalkerCode)
+};
+
+std::vector<Hero*>::iterator currentHero = heroes.begin();
+
+void previousHero(){
+    if(currentHero == heroes.begin()){
+        currentHero = heroes.end() - 1;
+    }else{
+        --currentHero;
+    }
+}
+
+void nextHero(){
+    ++currentHero;
+    if(currentHero == heroes.end())
+        currentHero = heroes.begin();
+}
 
 Sniper::Sniper(const uint16_t *currentAvatar) : Hero(8, 0, "sniper", currentAvatar) {}
 
 void Sniper::specialSkill(){
+    //every hero should do different action
     gb.display.printf("sniper special skill placeholder");
 }
 
@@ -30,29 +54,4 @@ Hacker::Hacker(const uint16_t *currentAvatar) : Hero(6, 2, "hacker", currentAvat
 
 void Hacker::specialSkill(){
     gb.display.printf("hacker special skill placeholder");
-}
-
-std::vector<Hero*>heroes = {
-                            new Gunner(startAvatarGunnerCode),
-                            new Sniper(startAvatarSniperCode),
-                            new Pope(startAvatarPopeCode),
-                            new Hacker(startAvatarHackerCode),
-                            new Stalker(startAvatarStalkerCode)
-};
-
-std::vector<Hero*>::iterator currentHero = heroes.begin();
-
-void previousHero(){
-    //first hero & leftarrow = bug!!!!!!!
-    if(currentHero == heroes.begin()){
-        currentHero = heroes.end();
-    }else{
-        --currentHero;
-    }
-}
-
-void nextHero(){
-    ++currentHero;
-    if(currentHero == heroes.end())
-        currentHero = heroes.begin();
 }

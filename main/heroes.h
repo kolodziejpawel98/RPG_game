@@ -12,6 +12,11 @@
 #include "declarations.h"
 #include <vector>
 
+extern std::vector<Hero*>heroes;
+extern std::vector<Hero*>::iterator currentHero;
+void nextHero();
+void previousHero();
+
 class Gunner : public Hero{
     public:
         Gunner(const uint16_t *currentAvatar);
@@ -41,8 +46,3 @@ class Hacker : public Hero{
         Hacker(const uint16_t *currentAvatar);
         void specialSkill() override;
 };
-
-extern std::vector<Hero*>heroes;
-extern std::vector<Hero*>::iterator currentHero;
-void nextHero();
-void previousHero();

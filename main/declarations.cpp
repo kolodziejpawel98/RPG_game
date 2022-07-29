@@ -3,18 +3,11 @@
 #include "hero.h"
 // #include "graphics.h"
 
-namespace heroMapCoordinates{
+namespace heroMapCoordinates{ //do przeniesienia
     uint8_t x = 10;
     uint8_t y = 10;
     uint8_t width = 8;
     uint8_t height = 8;
-}
-
-namespace screenDimension{
-    const uint8_t highResWidth = 160;
-    const uint8_t highResHeight = 128;
-    const uint8_t lowResWidth = 80;
-    const uint8_t lowResHeight = 64;
 }
 
 enum gameScreens{
@@ -22,6 +15,24 @@ enum gameScreens{
     MAP
 }gameScreen;
 
+void startGame(){
+    buttonListener();
+    if(gameScreen == HERO_CHOOSING){
+        gb.display.drawImage(0, 0, startBackground);
+        gb.display.setCursor(5, 38);
+        gb.display.printf("Attack");
+        gb.display.setCursor(5, 47);
+        gb.display.printf("Defence");
+        (*currentHero)->drawHeroElements();
+    }else if(gameScreen == MAP){
+        (*currentHero)->specialSkill();
+        gb.display.setColor(greenBackground);
+        gb.display.fillRect(0, 0, screenDimension::lowResWidth, screenDimension::lowResHeight);
+        gb.display.drawImage(-32, -30, mapWorldElementsCode);
+        gb.display.setColor(RED);
+        gb.display.fillRect(heroMapCoordinates::x, heroMapCoordinates::y, 3, 3);
+    }
+}
 
 void buttonListener(){
     switch(gameScreen){
@@ -56,49 +67,15 @@ void buttonListener(){
     } 
 }
 
-// void drawHeroInfo(){
-    // Image avatar((*currentHero)->currentAvatar);
-    // uint8_t move = 0;
-    // gb.display.setColor(WHITE);
-    // gb.display.setCursor(13, 13);
-    // gb.display.println((*currentHero)->name);
-    // gb.display.setCursor(69, 38);
-    // gb.display.printf("%d", (*currentHero)->attack);
-    // gb.display.setCursor(69, 47);
-    // gb.display.printf("%d", (*currentHero)->defence);
-    // gb.display.drawImage(35, 38, startSkillBar);
-    // gb.display.drawImage(35, 47, startSkillBar);
-    // for(uint8_t i = 0; i<(*currentHero)->attack; ++i){
-    //     gb.display.drawImage(36 + move, 39, startSkillCell);
-    //     move += 4;
-    // }
-    // move = 0;
-    // for(uint8_t i = 0; i<(*currentHero)->defence; ++i){
-    //     gb.display.drawImage(36 + move, 48, startSkillCell);
-    //     move += 4;
-    // }
-    // gb.display.drawImage(4, 12, startLeftArrowDefault);
-    // gb.display.drawImage(44, 12, startRightArrowDefault);
+// void mapMoving(){
+//     if(heroMapCoordinates::x < screenDimension::mapMovingPointLeft){
+//         gb.display.drawImage(-32 + (), -30, mapWorldElementsCode);
+//     }else if(heroMapCoordinates::x > screenDimension::mapMovingPointRight){
 
-    // gb.display.drawImage(54, 2, avatar);
+//     }else if(heroMapCoordinates::y < screenDimension::mapMovingPointUp){
+
+//     }else if(heroMapCoordinates::y < screenDimension::mapMovingPointBottom){
+
+//     }
+
 // }
-
-void startGame(){
-    buttonListener();
-    if(gameScreen == HERO_CHOOSING){
-        gb.display.drawImage(0, 0, startBackground);
-        gb.display.setCursor(5, 38);
-        gb.display.printf("Attack");
-        gb.display.setCursor(5, 47);
-        gb.display.printf("Defence");
-        (*currentHero)->drawHeroElements();
-    }else if(gameScreen == MAP){
-        (*currentHero)->specialSkill();
-        // gb.display.init(80, 64, ColorMode::index);
-        // gb.display.setCursor(13, 13);
-        // gb.display.printf("warrior:");
-        // gb.display.setCursor(13, 19);
-        // gb.display.printf("1 2 3 4 5 6 7 8 9 0 10:");
-        // gb.display.setCursor(13, 34);
-    }
-}

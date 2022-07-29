@@ -13,7 +13,6 @@ void Hero::drawHeroElements(){
     gb.display.setColor(WHITE);
     gb.display.setCursor(13, 13);
     gb.display.println(name);
-    // gb.display.println("xdd");
     gb.display.setCursor(69, 38);
     gb.display.printf("%d", attack);
     gb.display.setCursor(69, 47);
@@ -31,6 +30,5 @@ void Hero::drawHeroElements(){
     }
     gb.display.drawImage(4, 12, startLeftArrowDefault);
     gb.display.drawImage(44, 12, startRightArrowDefault);
-
     gb.display.drawImage(54, 2, avatar);
 }
