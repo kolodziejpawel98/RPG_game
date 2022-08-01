@@ -25,10 +25,14 @@ namespace screenDimension{
 
 enum gameScreens{
     HERO_CHOOSING,
-    MAP
+    MAP,
+    MAP_TO_LOCATION_POPUP,
+    LOCATION
 }gameScreen;
 
 String debugLine = "xd";
+int cursorPositionX = 16;
+int cursorPositionY = 42;
 
 void startGame(){
     buttonListener();
@@ -50,6 +54,25 @@ void startGame(){
         gb.display.setCursor(5, 47);
         gb.display.println(debugLine);
         collider();
+    }else if(gameScreen == MAP_TO_LOCATION_POPUP){
+        gb.display.setColor(greenBackground);
+        gb.display.fillRect(0, 0, screenDimension::lowResWidth, screenDimension::lowResHeight);
+        gb.display.drawImage(screenDimension::mapPrzesuniecieX, screenDimension::mapPrzesuniecieY, mapWorldElements);
+        gb.display.setColor(WHITE);
+        gb.display.fillRect(8, 9, 64, 46);
+        gb.display.setColor(BLUE);
+        gb.display.fillRect(cursorPositionX, cursorPositionY, 13, 7);
+        gb.display.setColor(BLACK);
+        gb.display.setCursor(15, 15);
+        gb.display.printf("Enter the\n        location?");
+        gb.display.setCursor(18, 42);
+        gb.display.printf("yes");
+        gb.display.setCursor(52, 42);
+        gb.display.printf("no");
+        // gb.display.println(debugLine);
+    }else if(gameScreen == LOCATION){
+        gb.display.setCursor(20, 20);
+        gb.display.printf("LOCATION!!!");
     }
 }
 
@@ -91,11 +114,35 @@ void buttonListener(){
                 }
             }
             break;
+        case MAP_TO_LOCATION_POPUP:
+            if (gb.buttons.pressed(BUTTON_LEFT)) {
+                cursorPositionX = 16;
+                cursorPositionY = 42;
+            }else if(gb.buttons.pressed(BUTTON_RIGHT)){
+                cursorPositionX = 46;
+                cursorPositionY = 42;
+            }else if(gb.buttons.pressed(BUTTON_A) && cursorPositionX == 16){
+                gameScreen = LOCATION;
+            }else if(gb.buttons.pressed(BUTTON_A) && cursorPositionX == 46){
+                heroMapCoordinates::x += 3; //to change
+                heroMapCoordinates::y += 3; //to change
+                gameScreen = MAP;
+            }
+        break;
     } 
 }
 
 void collider(){
     gb.display.setColor(BLUE);
-    gb.display.fillRect(15, 15, 3, 3);
-    if(gb.collide.rectRect(heroMapCoordinates::x, heroMapCoordinates::y, 3, 3, 15, 15, 3, 3)) debugLine += "c";
+    gb.display.fillRect(15, 15, 3, 3); //powinien poruszac sie razem z mapa!!!!!!
+    if(gb.collide.rectRect(heroMapCoordinates::x, heroMapCoordinates::y, 3, 3, 15, 15, 3, 3)){
+        mapToLocationWindow();
+    }
+}
+
+// int cursorPositionX_no = 46;
+// int cursorPositionY_no = 42;
+void mapToLocationWindow(){
+    gameScreen = MAP_TO_LOCATION_POPUP;
+    // gameScreen = LOCATION; gdy gracz kliknie yes
 }
