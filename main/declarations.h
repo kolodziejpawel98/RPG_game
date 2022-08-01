@@ -15,6 +15,6 @@ void nextHero();
 void previousHero();
 void buttonListener();
 void drawHeroInfo();
-void mapMoving();
+// void mapMoving();
 
 

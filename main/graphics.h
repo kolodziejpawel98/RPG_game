@@ -10,17 +10,6 @@
 #undef max
 #undef min
 
-namespace screenDimension{
-    const uint8_t highResWidth = 160;
-    const uint8_t highResHeight = 128;
-    const uint8_t lowResWidth = 80;
-    const uint8_t lowResHeight = 64;
-    const uint8_t mapMovingPointLeft = 10;
-    const uint8_t mapMovingPointRight = lowResWidth - 10;
-    const uint8_t mapMovingPointUp = 10;
-    const uint8_t mapMovingPointBottom = lowResHeight - 10;
-}
-
 const uint16_t startBackgroundCode[] = {
 
     // metadata

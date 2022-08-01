@@ -10,10 +10,26 @@ namespace heroMapCoordinates{ //do przeniesienia
     uint8_t height = 8;
 }
 
+namespace screenDimension{
+    const uint8_t highResWidth = 160;
+    const uint8_t highResHeight = 128;
+    const uint8_t lowResWidth = 80;
+    const uint8_t lowResHeight = 64;
+    const uint8_t mapMovingPointLeft = 10;
+    const uint8_t mapMovingPointRight = lowResWidth - 10;
+    const uint8_t mapMovingPointUp = 10;
+    const uint8_t mapMovingPointBottom = lowResHeight - 10;
+    int mapPrzesuniecieX = -32;
+    int mapPrzesuniecieY = -30;
+}
+
 enum gameScreens{
     HERO_CHOOSING,
     MAP
 }gameScreen;
+
+
+String debugLine = "xd";
 
 void startGame(){
     buttonListener();
@@ -25,12 +41,16 @@ void startGame(){
         gb.display.printf("Defence");
         (*currentHero)->drawHeroElements();
     }else if(gameScreen == MAP){
+        
         (*currentHero)->specialSkill();
         gb.display.setColor(greenBackground);
         gb.display.fillRect(0, 0, screenDimension::lowResWidth, screenDimension::lowResHeight);
-        gb.display.drawImage(-32, -30, mapWorldElementsCode);
         gb.display.setColor(RED);
+        
+        gb.display.drawImage(screenDimension::mapPrzesuniecieX, screenDimension::mapPrzesuniecieY, mapWorldElements);
         gb.display.fillRect(heroMapCoordinates::x, heroMapCoordinates::y, 3, 3);
+        gb.display.setCursor(5, 47);
+        // gb.display.println(debugLine);
     }
 }
 
@@ -47,35 +67,30 @@ void buttonListener(){
             break;
         case MAP:
             if (gb.buttons.repeat(BUTTON_LEFT, 0)) {
-                if( heroMapCoordinates::x - 1 >= 0){
+                if( heroMapCoordinates::x == screenDimension::mapMovingPointLeft){
+                        screenDimension::mapPrzesuniecieX++;
+                }else if( heroMapCoordinates::x - 1 >= 0){
                     heroMapCoordinates::x--;
                 }
             }else if(gb.buttons.repeat(BUTTON_RIGHT, 0)){
-                if( heroMapCoordinates::x + 1 + heroMapCoordinates::width <= screenDimension::highResWidth){
+                if( heroMapCoordinates::x == screenDimension::mapMovingPointRight){
+                        screenDimension::mapPrzesuniecieX--;
+                }else if( heroMapCoordinates::x + 1 + heroMapCoordinates::width <= screenDimension::highResWidth){
                     heroMapCoordinates::x++;
                 }
             }else if(gb.buttons.repeat(BUTTON_UP, 0)){
-                if( heroMapCoordinates::y - 1 >= 0){
+                if( heroMapCoordinates::y == screenDimension::mapMovingPointUp){
+                        screenDimension::mapPrzesuniecieY++;
+                }else if( heroMapCoordinates::y - 1 >= 0){
                     heroMapCoordinates::y--;
                 }
             }else if(gb.buttons.repeat(BUTTON_DOWN, 0)){
-                if( heroMapCoordinates::y + 1 + heroMapCoordinates::height <= screenDimension::highResHeight){
+                if( heroMapCoordinates::y == screenDimension::mapMovingPointBottom){
+                        screenDimension::mapPrzesuniecieY--;
+                }else if( heroMapCoordinates::y + 1 + heroMapCoordinates::height <= screenDimension::highResHeight){
                     heroMapCoordinates::y++;
                 }
             }
             break;
     } 
 }
-
-// void mapMoving(){
-//     if(heroMapCoordinates::x < screenDimension::mapMovingPointLeft){
-//         gb.display.drawImage(-32 + (), -30, mapWorldElementsCode);
-//     }else if(heroMapCoordinates::x > screenDimension::mapMovingPointRight){
-
-//     }else if(heroMapCoordinates::y < screenDimension::mapMovingPointUp){
-
-//     }else if(heroMapCoordinates::y < screenDimension::mapMovingPointBottom){
-
-//     }
-
-// }
