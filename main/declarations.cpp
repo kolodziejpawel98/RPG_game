@@ -3,7 +3,7 @@
 #include "hero.h"
 // #include "graphics.h"
 
-namespace heroMapCoordinates{ //do przeniesienia
+namespace heroMapCoordinates{
     uint8_t x = 10;
     uint8_t y = 10;
     uint8_t width = 8;
@@ -28,7 +28,6 @@ enum gameScreens{
     MAP
 }gameScreen;
 
-
 String debugLine = "xd";
 
 void startGame(){
@@ -41,7 +40,6 @@ void startGame(){
         gb.display.printf("Defence");
         (*currentHero)->drawHeroElements();
     }else if(gameScreen == MAP){
-        
         (*currentHero)->specialSkill();
         gb.display.setColor(greenBackground);
         gb.display.fillRect(0, 0, screenDimension::lowResWidth, screenDimension::lowResHeight);
@@ -50,7 +48,8 @@ void startGame(){
         gb.display.drawImage(screenDimension::mapPrzesuniecieX, screenDimension::mapPrzesuniecieY, mapWorldElements);
         gb.display.fillRect(heroMapCoordinates::x, heroMapCoordinates::y, 3, 3);
         gb.display.setCursor(5, 47);
-        // gb.display.println(debugLine);
+        gb.display.println(debugLine);
+        collider();
     }
 }
 
@@ -93,4 +92,10 @@ void buttonListener(){
             }
             break;
     } 
+}
+
+void collider(){
+    gb.display.setColor(BLUE);
+    gb.display.fillRect(15, 15, 3, 3);
+    if(gb.collide.rectRect(heroMapCoordinates::x, heroMapCoordinates::y, 3, 3, 15, 15, 3, 3)) debugLine += "c";
 }
