@@ -5,7 +5,8 @@ bool Hero::operator==(const Hero* hero) const{
     return attack == hero->attack && defence == hero->defence;
 }
 
-Hero::Hero(uint8_t attack, uint8_t defence, String name, const uint16_t *currentAvatar): attack(attack), defence(defence), name(name), currentAvatar(currentAvatar) {}
+Hero::Hero(uint8_t attack, uint8_t defence, String name, const uint16_t *currentAvatar, const uint16_t *currentMapIcon) : 
+            attack(attack), defence(defence), name(name), currentAvatar(currentAvatar), currentMapIcon(currentMapIcon) {}
 
 void Hero::drawHeroElements(){
     Image avatar(currentAvatar);
@@ -31,4 +32,9 @@ void Hero::drawHeroElements(){
     gb.display.drawImage(4, 12, startLeftArrowDefault);
     gb.display.drawImage(44, 12, startRightArrowDefault);
     gb.display.drawImage(54, 2, avatar);
+}
+
+void Hero::drawMapHeroIcon(){
+    Image mapIcon(currentMapIcon);
+    gb.display.drawImage(heroMapCoordinates::x - 10, heroMapCoordinates::y - 10, mapIcon);
 }

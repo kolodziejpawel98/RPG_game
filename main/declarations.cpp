@@ -3,22 +3,15 @@
 #include "hero.h"
 // #include "graphics.h"
 
-namespace heroMapCoordinates{
-    uint8_t x = 50;
-    uint8_t y = 50;
-    uint8_t width = 8;
-    uint8_t height = 8;
-}
-
 namespace screenDimension{
     const uint8_t highResWidth = 160;
     const uint8_t highResHeight = 128;
     const uint8_t lowResWidth = 80;
     const uint8_t lowResHeight = 64;
-    const uint8_t mapMovingPointLeft = 10;
-    const uint8_t mapMovingPointRight = lowResWidth - 10;
-    const uint8_t mapMovingPointUp = 10;
-    const uint8_t mapMovingPointBottom = lowResHeight - 10;
+    const uint8_t mapMovingPointLeft = 18;
+    const uint8_t mapMovingPointRight = lowResWidth - 18;
+    const uint8_t mapMovingPointUp = 18;
+    const uint8_t mapMovingPointBottom = lowResHeight - 18;
     int mapPrzesuniecieX = -32;
     int mapPrzesuniecieY = -30;
 }
@@ -59,7 +52,8 @@ void startGame(){
         gb.display.drawImage(screenDimension::mapPrzesuniecieX + 6, screenDimension::mapPrzesuniecieY + 58, mapWorldCave);
         gb.display.drawImage(screenDimension::mapPrzesuniecieX + 26, screenDimension::mapPrzesuniecieY + 7, mapWorldCave);
         gb.display.drawImage(screenDimension::mapPrzesuniecieX + 34, screenDimension::mapPrzesuniecieY + 85, mapWorldCave);
-        gb.display.fillRect(heroMapCoordinates::x, heroMapCoordinates::y, 3, 3);
+        (*currentHero)->drawMapHeroIcon();
+        // gb.display.fillRect(heroMapCoordinates::x, heroMapCoordinates::y, 3, 3);
         gb.display.setCursor(5, 47);
         gb.display.println(debugLine);
         collider();
@@ -152,8 +146,8 @@ void buttonListener(){
             }else if(gb.buttons.pressed(BUTTON_A) && cursorPositionX == 16){
                 gameScreen = LOCATION;
             }else if(gb.buttons.pressed(BUTTON_A) && cursorPositionX == 46){
-                heroMapCoordinates::x += 3; //to change
-                heroMapCoordinates::y += 3; //to change
+                heroMapCoordinates::x -= 10; //to change
+                heroMapCoordinates::y -= 10; //to change
                 gameScreen = MAP;
             }
             break;
@@ -178,10 +172,10 @@ void collider(){
     gb.display.setColor(BLUE);
     gb.display.fillRect(screenDimension::mapPrzesuniecieX + 87, screenDimension::mapPrzesuniecieY + 85, 3, 3);
     // gb.display.setColor(YELLOW);
-    // gb.display.fillCircle(screenDimension::mapPrzesuniecieX + 43 , screenDimension::mapPrzesuniecieY + 39 , 15);
-    if(gb.collide.rectRect(heroMapCoordinates::x, heroMapCoordinates::y, 3, 3, screenDimension::mapPrzesuniecieX + 87, screenDimension::mapPrzesuniecieY + 85, 3, 3)){
+    // gb.display.fillRect(heroMapCoordinates::x - 10, heroMapCoordinates::y - 10, 8, 8);
+    if(gb.collide.rectRect(heroMapCoordinates::x - 10, heroMapCoordinates::y - 10, 8, 8, screenDimension::mapPrzesuniecieX + 87, screenDimension::mapPrzesuniecieY + 85, 3, 3)){
         gameScreen = MAP_TO_LOCATION_POPUP;
-    }else if(gb.collide.circleCircle(heroMapCoordinates::x, heroMapCoordinates::y, 2, screenDimension::mapPrzesuniecieX + 43 , screenDimension::mapPrzesuniecieY + 39 , 15)){
+    }else if(gb.collide.circleCircle(heroMapCoordinates::x, heroMapCoordinates::y, 7, screenDimension::mapPrzesuniecieX + 43 , screenDimension::mapPrzesuniecieY + 39 , 15)){
         gameScreen = MAP_TO_TOWN_POPUP;
     }
 }
