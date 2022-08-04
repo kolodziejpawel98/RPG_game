@@ -12,6 +12,11 @@ Image startRightArrowDefault(startRightArrowDefaultCode);
 Image startRightArrowActivated(startRightArrowActivatedCode);
 Image startLeftArrowDefault(startLeftArrowDefaultCode);
 Image startLeftArrowActivated(startLeftArrowActivatedCode);
-Image mapWorldElements(mapWorldElementsCode);
+// Image mapWorldElements(mapWorldElementsCode);
+Image mapWorldPath(mapWorldPathCode);
+Image mapWorldTown(mapWorldTownCode);
+Image mapWorldCave(mapWorldCaveCode);
+Image mapWorldQuestionMark(mapWorldQuestionMarkCode);
+Image mapWorldForest(mapWorldForestCode);
 
 Color greenBackground = gb.createColor(155, 188, 15);
