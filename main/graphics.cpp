@@ -23,6 +23,7 @@ Image mapWorldSniper(mapWorldSniper);
 Image mapWorldPope(mapWorldPope);
 Image mapWorldHacker(mapWorldHacker);
 Image mapWorldStalker(mapWorldStalker);
+Image mapWorldBackground(mapWorldBackgroundCode);
 
 Color greenBackground = gb.createColor(155, 188, 15);
 

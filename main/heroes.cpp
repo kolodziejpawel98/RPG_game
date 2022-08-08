@@ -29,29 +29,29 @@ Sniper::Sniper(const uint16_t *currentAvatar, const uint16_t *currentMapIcon) : 
 
 void Sniper::specialSkill(){
     //every hero should do different action
-    gb.display.printf("sniper special skill placeholder");
+    // gb.display.printf("sniper special skill placeholder");
 }
 
 Pope::Pope(const uint16_t *currentAvatar, const uint16_t *currentMapIcon) : Hero(8, 8, "pope", currentAvatar, currentMapIcon) {}
 
 void Pope::specialSkill(){
-    gb.display.printf("pope special skill placeholder");
+    // gb.display.printf("pope special skill placeholder");
 }
 
 Stalker::Stalker(const uint16_t *currentAvatar, const uint16_t *currentMapIcon) : Hero(0, 8, "stalker", currentAvatar, currentMapIcon) {}
 
 void Stalker::specialSkill(){
-    gb.display.printf("stalker special skill placeholder");
+    // gb.display.printf("stalker special skill placeholder");
 }
 
 Gunner::Gunner(const uint16_t *currentAvatar, const uint16_t *currentMapIcon) : Hero(4, 4, "gunner", currentAvatar, currentMapIcon) {}
 
 void Gunner::specialSkill(){
-    gb.display.printf("gunner special skill placeholder");
+    // gb.display.printf("gunner special skill placeholder");
 }
 
 Hacker::Hacker(const uint16_t *currentAvatar, const uint16_t *currentMapIcon) : Hero(6, 2, "hacker", currentAvatar, currentMapIcon) {}
 
 void Hacker::specialSkill(){
-    gb.display.printf("hacker special skill placeholder");
+    // gb.display.printf("hacker special skill placeholder");
 }

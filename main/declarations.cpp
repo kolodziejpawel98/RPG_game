@@ -12,8 +12,8 @@ namespace screenDimension{
     const uint8_t mapMovingPointRight = lowResWidth - 18;
     const uint8_t mapMovingPointUp = 18;
     const uint8_t mapMovingPointBottom = lowResHeight - 18;
-    int mapPrzesuniecieX = -32;
-    int mapPrzesuniecieY = -30;
+    int mapPrzesuniecieX = -40;
+    int mapPrzesuniecieY = -49;
 }
 
 enum gameScreens{
@@ -40,25 +40,25 @@ void startGame(){
         (*currentHero)->drawHeroElements();
     }else if(gameScreen == MAP){
         (*currentHero)->specialSkill();
-        gb.display.setColor(greenBackground);
-        gb.display.fillRect(0, 0, screenDimension::lowResWidth, screenDimension::lowResHeight);
+        // gb.display.setColor(greenBackground);
+        // gb.display.fillRect(0, 0, screenDimension::lowResWidth, screenDimension::lowResHeight);
         gb.display.setColor(RED);
         
         // gb.display.drawImage(screenDimension::mapPrzesuniecieX, screenDimension::mapPrzesuniecieY, mapWorldElements);
-        gb.display.drawImage(screenDimension::mapPrzesuniecieX + 6, screenDimension::mapPrzesuniecieY, mapWorldPath);
-        gb.display.drawImage(screenDimension::mapPrzesuniecieX + 100, screenDimension::mapPrzesuniecieY + 42, mapWorldForest); //stworzyc hardcode zmienne dla obiektow
-        gb.display.drawImage(screenDimension::mapPrzesuniecieX + 26, screenDimension::mapPrzesuniecieY + 26, mapWorldTown); //32 + wymiar poczatkowy  => mapprzesuniecieX + wynik
-        gb.display.drawImage(screenDimension::mapPrzesuniecieX + 34, screenDimension::mapPrzesuniecieY + 85, mapWorldCave);
-        gb.display.drawImage(screenDimension::mapPrzesuniecieX + 6, screenDimension::mapPrzesuniecieY + 58, mapWorldCave);
-        gb.display.drawImage(screenDimension::mapPrzesuniecieX + 26, screenDimension::mapPrzesuniecieY + 7, mapWorldCave);
-        gb.display.drawImage(screenDimension::mapPrzesuniecieX + 34, screenDimension::mapPrzesuniecieY + 85, mapWorldCave);
+        gb.display.drawImage(screenDimension::mapPrzesuniecieX, screenDimension::mapPrzesuniecieY, mapWorldBackground);
+        // gb.display.drawImage(screenDimension::mapPrzesuniecieX + 100, screenDimension::mapPrzesuniecieY + 42, mapWorldForest); //stworzyc hardcode zmienne dla obiektow
+        // gb.display.drawImage(screenDimension::mapPrzesuniecieX + 26, screenDimension::mapPrzesuniecieY + 26, mapWorldTown); //32 + wymiar poczatkowy  => mapprzesuniecieX + wynik
+        // gb.display.drawImage(screenDimension::mapPrzesuniecieX + 34, screenDimension::mapPrzesuniecieY + 85, mapWorldCave);
+        // gb.display.drawImage(screenDimension::mapPrzesuniecieX + 6, screenDimension::mapPrzesuniecieY + 58, mapWorldCave);
+        // gb.display.drawImage(screenDimension::mapPrzesuniecieX + 26, screenDimension::mapPrzesuniecieY + 7, mapWorldCave);
+        // gb.display.drawImage(screenDimension::mapPrzesuniecieX + 34, screenDimension::mapPrzesuniecieY + 85, mapWorldCave);
         (*currentHero)->drawMapHeroIcon();
         // gb.display.fillRect(heroMapCoordinates::x, heroMapCoordinates::y, 3, 3);
         gb.display.setCursor(5, 47);
-        gb.display.println(debugLine);
+        // gb.display.println(debugLine); <-----------------
         collider();
     }else if(gameScreen == MAP_TO_LOCATION_POPUP){
-        gb.display.setColor(greenBackground);
+        gb.display.drawImage(screenDimension::mapPrzesuniecieX, screenDimension::mapPrzesuniecieY, mapWorldBackground);
         gb.display.fillRect(0, 0, screenDimension::lowResWidth, screenDimension::lowResHeight);
         // gb.display.drawImage(screenDimension::mapPrzesuniecieX, screenDimension::mapPrzesuniecieY, mapWorldElements);
         gb.display.setColor(WHITE);
@@ -74,8 +74,7 @@ void startGame(){
         gb.display.printf("no");
         // gb.display.println(debugLine);
     }else if(gameScreen == MAP_TO_TOWN_POPUP){
-        gb.display.setColor(greenBackground);
-        gb.display.fillRect(0, 0, screenDimension::lowResWidth, screenDimension::lowResHeight);
+        gb.display.drawImage(screenDimension::mapPrzesuniecieX, screenDimension::mapPrzesuniecieY, mapWorldBackground);
         // gb.display.drawImage(screenDimension::mapPrzesuniecieX, screenDimension::mapPrzesuniecieY, mapWorldElements);
         gb.display.setColor(WHITE);
         gb.display.fillRect(8, 9, 64, 46);
@@ -170,14 +169,15 @@ void buttonListener(){
 
 void collider(){
     gb.display.setColor(BLUE);
-    gb.display.fillRect(screenDimension::mapPrzesuniecieX + 87, screenDimension::mapPrzesuniecieY + 85, 3, 3);
+    // gb.display.fillRect(screenDimension::mapPrzesuniecieX + 87, screenDimension::mapPrzesuniecieY + 85, 3, 3);
     // gb.display.setColor(YELLOW);
     // gb.display.fillRect(heroMapCoordinates::x - 10, heroMapCoordinates::y - 10, 8, 8);
-    if(gb.collide.rectRect(heroMapCoordinates::x - 10, heroMapCoordinates::y - 10, 8, 8, screenDimension::mapPrzesuniecieX + 87, screenDimension::mapPrzesuniecieY + 85, 3, 3)){
-        gameScreen = MAP_TO_LOCATION_POPUP;
-    }else if(gb.collide.circleCircle(heroMapCoordinates::x, heroMapCoordinates::y, 7, screenDimension::mapPrzesuniecieX + 43 , screenDimension::mapPrzesuniecieY + 39 , 15)){
-        gameScreen = MAP_TO_TOWN_POPUP;
-    }
+    // gb.display.fillCircle(screenDimension::mapPrzesuniecieX + 43 , screenDimension::mapPrzesuniecieY + 39 , 15);
+    // if(gb.collide.rectRect(heroMapCoordinates::x - 10, heroMapCoordinates::y - 10, 8, 8, screenDimension::mapPrzesuniecieX + 87, screenDimension::mapPrzesuniecieY + 85, 3, 3)){
+        // gameScreen = MAP_TO_LOCATION_POPUP;
+    // }else if(gb.collide.circleCircle(heroMapCoordinates::x, heroMapCoordinates::y, 7, screenDimension::mapPrzesuniecieX + 43 , screenDimension::mapPrzesuniecieY + 39 , 15)){
+        // gameScreen = MAP_TO_TOWN_POPUP;
+    // }
 }
 
 // int cursorPositionX_no = 46;
