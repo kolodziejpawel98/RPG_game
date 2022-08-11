@@ -11,7 +11,7 @@ std::vector<Hero*>heroes = {
 
 std::vector<Hero*>::iterator currentHero = heroes.begin();
 
-void previousHero(){
+void hero::previous(){
     if(currentHero == heroes.begin()){
         currentHero = heroes.end() - 1;
     }else{
@@ -19,7 +19,7 @@ void previousHero(){
     }
 }
 
-void nextHero(){
+void hero::next(){
     ++currentHero;
     if(currentHero == heroes.end())
         currentHero = heroes.begin();

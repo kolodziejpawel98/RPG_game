@@ -14,8 +14,10 @@
 
 extern std::vector<Hero*>heroes;
 extern std::vector<Hero*>::iterator currentHero;
-void nextHero();
-void previousHero();
+namespace hero{
+    void next();
+    void previous();
+}
 
 class Gunner : public Hero{
     public:

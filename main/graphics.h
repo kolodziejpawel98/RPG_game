@@ -1043,5 +1043,22 @@ namespace heroMapCoordinates{
     extern uint8_t height;
 }
 
+namespace screenDimension{
+    extern const uint8_t highResWidth;
+    extern const uint8_t highResHeight;
+    extern const uint8_t lowResWidth;
+    extern const uint8_t lowResHeight;
+    extern const uint8_t mapMovingPointLeft;
+    extern const uint8_t mapMovingPointRight;
+    extern const uint8_t mapMovingPointUp;
+    extern const uint8_t mapMovingPointBottom;
+    extern int mapPrzesuniecieX;
+    extern int mapPrzesuniecieY;
+}
+
+namespace cursorPosition{
+    extern uint8_t x, y;
+}
+
 #endif
 
