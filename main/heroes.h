@@ -21,30 +21,30 @@ namespace hero{
 
 class Gunner : public Hero{
     public:
-        Gunner(const uint16_t *currentAvatar, const uint16_t *currentMapIcon);
+        Gunner();
         void specialSkill() override;
 };
 
 class Sniper : public Hero{
     public:
-        Sniper(const uint16_t *currentAvatar, const uint16_t *currentMapIcon);
+        Sniper();
         void specialSkill() override;
 };
 
 class Stalker : public Hero{
     public:
-        Stalker(const uint16_t *currentAvatar, const uint16_t *currentMapIcon);
+        Stalker();
         void specialSkill() override;
 };
 
 class Pope : public Hero{
     public:
-        Pope(const uint16_t *currentAvatar, const uint16_t *currentMapIcon);
+        Pope();
         void specialSkill() override;
 };
 
 class Hacker : public Hero{
     public:
-        Hacker(const uint16_t *currentAvatar, const uint16_t *currentMapIcon);
+        Hacker();
         void specialSkill() override;
 };

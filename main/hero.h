@@ -9,6 +9,7 @@
 #undef max
 #undef min
 #include "graphics.h"
+#include <memory>
 
 class Hero{
     public:

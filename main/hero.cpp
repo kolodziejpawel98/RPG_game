@@ -7,7 +7,7 @@ bool Hero::operator==(const Hero* hero) const{
 
 Hero::Hero(uint8_t attack, uint8_t defence, String name, const uint16_t *currentAvatar, const uint16_t *currentMapIcon) : 
             attack(attack), defence(defence), name(name), currentAvatar(currentAvatar), currentMapIcon(currentMapIcon) {}
-
+            
 void Hero::drawHeroElements(){
     Image avatar(currentAvatar);
     uint8_t move = 0;
