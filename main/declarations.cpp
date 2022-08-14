@@ -4,7 +4,9 @@
 // #include "graphics.h"
 
 enum gameScreens{
+    START,
     HERO_CHOOSING,
+    HERO_TO_MAP,
     MAP,
     MAP_TO_LOCATION_POPUP,
     MAP_TO_TOWN_POPUP,
@@ -15,8 +17,12 @@ enum gameScreens{
 String debugLine = "xd";
 
 void startGame(){
-    if(gameScreen == HERO_CHOOSING){
+    if(gameScreen == START){
+        start::screen::display();
+    }else if(gameScreen == HERO_CHOOSING){
         heroChoosing::screen::display();
+    }else if(gameScreen == HERO_TO_MAP){
+        
     }else if(gameScreen == MAP){
         worldMap::screen::display();
     }else if(gameScreen == MAP_TO_LOCATION_POPUP){
@@ -31,6 +37,34 @@ void startGame(){
         gb.display.printf("TOWN!!!");
     }
     buttonListener();
+}
+
+const std::pair <uint8_t, uint8_t> start::screen::startGameText(24, 28);
+const std::pair <uint8_t, uint8_t> start::screen::exitGameText(24, 42);
+// const std::pair <uint8_t, uint8_t> start::screen::cursor(14, 28);
+std::shared_ptr<std::pair<uint8_t, uint8_t>> start::screen::currentOption = std::make_shared<std::pair<uint8_t, uint8_t>>(start::screen::startGameText);
+
+void start::screen::display(){
+    gb.display.drawImage(0, 0, startBackground);
+    gb.display.drawImage(currentOption->first, currentOption->second, startRightArrowDefault); //cursor
+    gb.display.setCursor(startGameText.first, startGameText.second);
+    gb.display.printf("Start game");
+    gb.display.setCursor(exitGameText.first, exitGameText.second);
+    gb.display.printf("Exit");
+    buttonListener::moveUp(); //zmienic nazwe na buttonListener
+}
+
+void start::buttonListener::moveUp(){ //BUG todo
+    if(gb.buttons.pressed(BUTTON_DOWN) == true || gb.buttons.pressed(BUTTON_UP) == true){
+        if(screen::currentOption.get() == &screen::startGameText){
+                gb.display.setColor(RED);
+        gb.display.fillRect(0, 0, screenDimension::lowResWidth, screenDimension::lowResHeight);
+    
+            screen::currentOption = std::make_shared<std::pair<uint8_t, uint8_t>>(screen::exitGameText);
+        }else if(screen::currentOption.get() == &start::screen::exitGameText){
+            screen::currentOption = std::make_shared<std::pair<uint8_t, uint8_t>>(screen::startGameText);
+        }
+    }
 }
 
 void heroChoosing::screen::display(){
