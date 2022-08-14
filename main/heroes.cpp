@@ -1,15 +1,15 @@
 #include "heroes.h"
 // #include <Gamebuino-Meta.h>
 
-std::vector<Hero*>heroes = {
-                            new Gunner(),
-                            new Sniper(),
-                            new Pope(),
-                            new Hacker(),
-                            new Stalker()
+std::vector<std::shared_ptr<Hero>>heroes = {
+                            std::make_shared<Gunner>(),
+                            std::make_shared<Sniper>(),
+                            std::make_shared<Pope>(),
+                            std::make_shared<Hacker>(),
+                            std::make_shared<Stalker>(),
 };
 
-std::vector<Hero*>::iterator currentHero = heroes.begin();
+std::vector<std::shared_ptr<Hero>>::iterator currentHero = heroes.begin();
 
 void hero::previous(){
     if(currentHero == heroes.begin()){

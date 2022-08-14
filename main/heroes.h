@@ -11,9 +11,11 @@
 #include "hero.h"
 #include "declarations.h"
 #include <vector>
+#include <memory>
 
-extern std::vector<Hero*>heroes;
-extern std::vector<Hero*>::iterator currentHero;
+extern std::vector<std::shared_ptr<Hero>>heroes;
+extern std::vector<std::shared_ptr<Hero>>::iterator currentHero;
+
 namespace hero{
     void next();
     void previous();

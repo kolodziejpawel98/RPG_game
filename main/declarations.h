@@ -10,7 +10,6 @@
 #include "heroes.h"
 #include "graphics.h"
 
-
 namespace heroChoosing{
 	namespace screen{
 		void display();
@@ -48,8 +47,6 @@ namespace mapToLocation{
 }
 
 void startGame();
-// void nextHero();
-// void previousHero();
 void buttonListener();
 void drawHeroInfo();
 void collider();
