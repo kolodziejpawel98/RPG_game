@@ -8,20 +8,20 @@
 #undef max
 #undef min
 #include <utility>
+#include <string>
 #include "heroes.h"
 #include "graphics.h"
 
 namespace start{
 	namespace screen{
-		extern const std::pair <uint8_t, uint8_t> startGameText;
-		extern const std::pair <uint8_t, uint8_t> exitGameText;
-		// extern const std::pair <uint8_t, uint8_t> cursor;
-		extern std::shared_ptr<std::pair<uint8_t, uint8_t>> currentOption;
+		extern std::pair <uint8_t, uint8_t> startGameText;
+		extern std::pair <uint8_t, uint8_t> exitGameText;
+		extern std::pair <uint8_t, uint8_t> *currentOption;
 		void display();
 	}
-	namespace buttonListener{
-		void moveDown();
-		void moveUp();
+	void buttonListener();
+	namespace action{
+		void moveCursor();
 		void select();
 	}
 }
@@ -30,7 +30,8 @@ namespace heroChoosing{
 	namespace screen{
 		void display();
 	}
-	namespace buttonListener{
+	void buttonListener();
+	namespace action{
 		void nextHero();
 		void previousHero();
 		void select();
@@ -47,7 +48,8 @@ namespace worldMap{
 	namespace screen{
 		void display();
 	}
-	namespace buttonListener{
+	void buttonListener();
+	namespace action{
 		void moveUp();
 		void moveDown();
 		void moveLeft();
@@ -59,7 +61,8 @@ namespace mapToLocation{
 	namespace screen{
 		void display();
 	}
-	namespace buttonListener{
+	void buttonListener();
+	namespace action{
 		void yesHover();
 		void yesSelect();
 		void noHover();
@@ -68,8 +71,7 @@ namespace mapToLocation{
 }
 
 void startGame();
-void buttonListener();
-void drawHeroInfo();
+// void drawHeroInfo();
 void collider();
-void mapToLocationWindow();
+// void mapToLocationWindow();
 
