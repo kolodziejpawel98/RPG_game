@@ -4,7 +4,7 @@
 
 void setup() {
   gb.begin();
-  gb.setFrameRate(30); 
+  gb.setFrameRate(40); 
 }    
  
 void loop() {

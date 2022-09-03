@@ -9,6 +9,7 @@
 #undef min
 #include <utility>
 #include <string>
+#include <memory>
 #include "heroes.h"
 #include "graphics.h"
 
@@ -49,6 +50,7 @@ namespace worldMap{
 		void display();
 	}
 	void buttonListener();
+	void collider();
 	namespace action{
 		void moveUp();
 		void moveDown();
@@ -72,6 +74,6 @@ namespace mapToLocation{
 
 void startGame();
 // void drawHeroInfo();
-void collider();
+// void collider();
 // void mapToLocationWindow();
 
