@@ -8,7 +8,7 @@
 #endif
 #undef max
 #undef min
-#include "graphics.h"
+#include "graphics.hpp"
 #include <memory>
 
 class Hero{

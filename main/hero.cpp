@@ -1,5 +1,4 @@
-#include "hero.h"
-// #include <Gamebuino-Meta.h>
+#include "hero.hpp"
 
 bool Hero::operator==(const Hero* hero) const{
     return attack == hero->attack && defence == hero->defence;

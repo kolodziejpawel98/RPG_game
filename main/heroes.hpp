@@ -8,8 +8,8 @@
 #endif
 #undef max
 #undef min
-#include "hero.h"
-#include "declarations.h"
+#include "hero.hpp"
+#include "start_game.hpp"
 #include <vector>
 #include <memory>
 

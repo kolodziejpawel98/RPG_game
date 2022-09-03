@@ -1,5 +1,4 @@
-#include "heroes.h"
-// #include <Gamebuino-Meta.h>
+#include "heroes.hpp"
 
 std::vector<std::shared_ptr<Hero>>heroes = {
                             std::make_shared<Gunner>(),

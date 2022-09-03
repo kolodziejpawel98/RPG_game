@@ -1,6 +1,6 @@
 #include <Gamebuino-Meta.h>
-#include "graphics.h"
-#include "declarations.h"
+#include "graphics.hpp"
+#include "start_game.hpp"
 
 void setup() {
   gb.begin();

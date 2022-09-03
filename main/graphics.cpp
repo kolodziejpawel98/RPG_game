@@ -1,4 +1,4 @@
-#include "graphics.h"
+#include "graphics.hpp"
 
 Image startBackground(startBackgroundCode);
 Image startSkillBar(startSkillBarCode);
@@ -12,7 +12,6 @@ Image startRightArrowDefault(startRightArrowDefaultCode);
 Image startRightArrowActivated(startRightArrowActivatedCode);
 Image startLeftArrowDefault(startLeftArrowDefaultCode);
 Image startLeftArrowActivated(startLeftArrowActivatedCode);
-// Image mapWorldElements(mapWorldElementsCode);
 Image mapWorldPath(mapWorldPathCode);
 Image mapWorldTown(mapWorldTownCode);
 Image mapWorldCave(mapWorldCaveCode);
@@ -24,8 +23,6 @@ Image mapWorldPope(mapWorldPope);
 Image mapWorldHacker(mapWorldHacker);
 Image mapWorldStalker(mapWorldStalker);
 Image mapWorldBackground(mapWorldBackgroundCode);
-
-// Color greenBackground = gb.createColor(155, 188, 15);
 
 namespace heroMapCoordinates{
     uint8_t x = 50;
