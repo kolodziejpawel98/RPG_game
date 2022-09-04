@@ -10,19 +10,18 @@
 #include <utility>
 #include <string>
 #include <memory>
-#include "../heroes.hpp"
-#include "../graphics.hpp"
+#include "heroes.hpp"
+#include "graphics.hpp"
 
-namespace start{
+namespace mapToLocation{
 	namespace screen{
-		extern std::pair <uint8_t, uint8_t> startGameText;
-		extern std::pair <uint8_t, uint8_t> exitGameText;
-		extern std::pair <uint8_t, uint8_t> *currentOption;
 		void display();
 	}
 	void buttonListener();
 	namespace action{
-		void moveCursor();
-		void select();
+		void yesHover();
+		void yesSelect();
+		void noHover();
+		void noSelect();
 	}
 }

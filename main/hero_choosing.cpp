@@ -1,6 +1,6 @@
 #include <Gamebuino-Meta.h>
 #include "hero_choosing.hpp"
-#include "../start_game.hpp"
+#include "start_game.hpp"
 
 void heroChoosing::screen::display(){
     gb.display.drawImage(0, 0, startBackground);

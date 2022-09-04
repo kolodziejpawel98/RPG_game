@@ -10,18 +10,19 @@
 #include <utility>
 #include <string>
 #include <memory>
-#include "../heroes.hpp"
-#include "../graphics.hpp"
+#include "heroes.hpp"
+#include "graphics.hpp"
 
-namespace mapToLocation{
+namespace worldMap{
 	namespace screen{
 		void display();
 	}
 	void buttonListener();
+	void collider();
 	namespace action{
-		void yesHover();
-		void yesSelect();
-		void noHover();
-		void noSelect();
+		void moveUp();
+		void moveDown();
+		void moveLeft();
+		void moveRight();
 	}
 }

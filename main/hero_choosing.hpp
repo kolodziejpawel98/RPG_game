@@ -10,11 +10,17 @@
 #include <utility>
 #include <string>
 #include <memory>
-#include "../heroes.hpp"
-#include "../graphics.hpp"
+#include "heroes.hpp"
+#include "graphics.hpp"
 
-namespace heroToMap{
+namespace heroChoosing{
 	namespace screen{
 		void display();
+	}
+	void buttonListener();
+	namespace action{
+		void nextHero();
+		void previousHero();
+		void select();
 	}
 }

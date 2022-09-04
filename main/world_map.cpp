@@ -1,6 +1,6 @@
 #include <Gamebuino-Meta.h>
 #include "world_map.hpp"
-#include "../start_game.hpp"
+#include "start_game.hpp"
 
 void worldMap::screen::display(){
     gb.display.drawImage(screenDimension::mapPrzesuniecieX, screenDimension::mapPrzesuniecieY, mapWorldBackground);

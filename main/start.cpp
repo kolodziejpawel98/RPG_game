@@ -1,6 +1,6 @@
 #include <Gamebuino-Meta.h>
 #include "start.hpp"
-#include "../start_game.hpp"
+#include "start_game.hpp"
 
 std::pair <uint8_t, uint8_t> start::screen::startGameText(24, 28);
 std::pair <uint8_t, uint8_t> start::screen::exitGameText(24, 42);

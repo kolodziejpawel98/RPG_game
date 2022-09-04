@@ -16,6 +16,7 @@
 #include "hero_to_map.hpp"
 #include "map_to_location.hpp"
 #include "world_map.hpp"
+#include "location.hpp"
 #include "graphics.hpp"
 
 enum gameScreens{

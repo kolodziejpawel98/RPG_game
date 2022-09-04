@@ -18,8 +18,7 @@ void startGame(){
     }else if(gameScreen == MAP_TO_TOWN_POPUP){
         mapToLocation::screen::display();
     }else if(gameScreen == LOCATION){
-        gb.display.setCursor(20, 20);
-        gb.display.printf("LOCATION!!!");
+        // location::screen::display();
     }else if(gameScreen == TOWN){
         gb.display.setCursor(20, 20);
         gb.display.printf("TOWN!!!");

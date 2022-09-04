@@ -1,6 +1,6 @@
 #include <Gamebuino-Meta.h>
 #include "map_to_location.hpp"
-#include "../start_game.hpp"
+#include "start_game.hpp"
 
 void mapToLocation::screen::display(){
     gb.display.drawImage(screenDimension::mapPrzesuniecieX, screenDimension::mapPrzesuniecieY, mapWorldBackground);
