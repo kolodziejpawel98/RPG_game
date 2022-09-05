@@ -18,6 +18,10 @@
 #include "world_map.hpp"
 #include "location.hpp"
 #include "graphics.hpp"
+#include <set>
+#include <Arduino.h>
+
+// extern std::set<int>xdSet;
 
 enum gameScreens{
     START,

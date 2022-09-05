@@ -2,11 +2,19 @@
 #include "location.hpp"
 // #include "start_game.hpp"
 
+String debugLine = "xd";
+
+Collider locationCollider;
 
 void location::screen::display(){
     gb.display.setColor(BLACK);
     gb.display.fillRect(0, 0, screenDimension::lowResWidth, screenDimension::lowResHeight);
-    drawBlockingElement(0, 0, 10, 20);
+    gb.display.println(debugLine);
+    drawBlockingElement(12, 12, 2, 20);
+    drawBlockingElement(12, 12, 20, 2);
+    location::buttonListener();
+    gb.display.setColor(RED);
+    gb.display.fillRect(heroMapCoordinates::x, heroMapCoordinates::y, heroMapCoordinates::width, heroMapCoordinates::height);
 }
 
 void location::drawBlockingElement(int x, int y, int width, int height){
@@ -15,6 +23,41 @@ void location::drawBlockingElement(int x, int y, int width, int height){
     locationCollider.addBlockingElement(x, y, width, height);
 }
 
+void location::buttonListener(){
+    if (gb.buttons.repeat(BUTTON_LEFT, 0)) {
+        location::action::moveLeft();
+    }else if(gb.buttons.repeat(BUTTON_RIGHT, 0)){
+        location::action::moveRight();
+    }else if(gb.buttons.repeat(BUTTON_UP, 0)){
+        location::action::moveUp();
+    }else if(gb.buttons.repeat(BUTTON_DOWN, 0)){
+        location::action::moveDown();
+    }
+}
+
+void location::action::moveUp(){
+    if(!locationCollider.isBlockingCollided(
+        heroMapCoordinates::x,
+        heroMapCoordinates::y - 1,
+        heroMapCoordinates::width,
+        heroMapCoordinates::height)){
+            // debugLine = "xd?";
+    gb.display.println(colliderDebugLine);
+            heroMapCoordinates::y--;
+    }
+}
+
+void location::action::moveDown(){
+    heroMapCoordinates::y++;
+}
+
+void location::action::moveLeft(){
+    heroMapCoordinates::x--;
+}
+
+void location::action::moveRight(){
+    heroMapCoordinates::x++;
+}
     
 //     gb.display.fillCircle(screenDimension::mapPrzesuniecieX + 87 + 2, screenDimension::mapPrzesuniecieY + 85 + 2, 2);
 //     // gb.display.setColor(YELLOW);

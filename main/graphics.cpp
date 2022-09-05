@@ -27,8 +27,8 @@ Image mapWorldBackground(mapWorldBackgroundCode);
 namespace heroMapCoordinates{
     uint8_t x = 50;
     uint8_t y = 50;
-    uint8_t width = 8;
-    uint8_t height = 8;
+    uint8_t width = 2;
+    uint8_t height = 2;
 }
 
 namespace screenDimension{

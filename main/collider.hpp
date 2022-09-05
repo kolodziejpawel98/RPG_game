@@ -9,10 +9,13 @@
 #undef min
 #include <utility>
 #include <string>
-#include <set>
+// #include <set>
 #include <memory>
+#include <vector>
 // #include "heroes.hpp"
 // #include "graphics.hpp"
+
+extern String colliderDebugLine;
 
 struct Coordinates{
     int x, y, width, height;
@@ -31,6 +34,6 @@ class Collider{
         bool isBlockingCollided(int playerX, int playerY, int playerWidth, int playerHeight);
         bool isInteractiveCollided(int playerX, int playerY, int playerWidth, int playerHeight);
     private:
-        std::set<std::shared_ptr<Coordinates>> blockingElements;
-        std::set<std::shared_ptr<Coordinates>> interactiveElements;
+        std::vector<std::shared_ptr<Coordinates>> blockingElements;
+        std::vector<std::shared_ptr<Coordinates>> interactiveElements;
 };

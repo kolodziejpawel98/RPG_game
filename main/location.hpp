@@ -16,17 +16,19 @@
 
 extern Collider locationCollider;
 
+extern String debugLine;
+
 namespace location{
 	namespace screen{
 		void display();
 	}
-	// void buttonListener();
+	void buttonListener();
 	// void collider();
     void drawBlockingElement(int x, int y, int width, int height);
 	namespace action{
-		// void moveUp();
-		// void moveDown();
-		// void moveLeft();
-		// void moveRight();
+		void moveUp();
+		void moveDown();
+		void moveLeft();
+		void moveRight();
 	}
 }
