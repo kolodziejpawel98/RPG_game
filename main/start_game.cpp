@@ -7,7 +7,7 @@
 gameScreens gameScreen;
 
 void startGame(){
-    gameScreen = LOCATION;//!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // gameScreen = LOCATION;//!!!!!!!!!!!!!!!!!!!!!!!!!!!
     if(gameScreen == START){
         start::screen::display();
     }else if(gameScreen == HERO_CHOOSING){

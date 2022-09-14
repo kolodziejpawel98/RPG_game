@@ -12,6 +12,7 @@
 // #include <set>
 #include <memory>
 #include <vector>
+#include <algorithm>
 // #include "heroes.hpp"
 // #include "graphics.hpp"
 
@@ -25,14 +26,22 @@ struct Coordinates{
         this->width = width;
         this->height = height;
     }
+    bool isCoordinateExist(int x, int y, int width, int height){
+        if(this->x == x && this->y == y && this->width == width && this->height == height){
+            return true;
+        }else return false;
+    }
 };
 
 class Collider{
     public:
         void addInteractiveElement(int x, int y, int width, int height);
         void addBlockingElement(int x, int y, int width, int height);
-        bool isBlockingCollided(int playerX, int playerY, int playerWidth, int playerHeight);
-        bool isInteractiveCollided(int playerX, int playerY, int playerWidth, int playerHeight);
+        bool isBlockingElementCollided(int playerX, int playerY, int playerWidth, int playerHeight);
+        bool isInteractiveElementCollided(int playerX, int playerY, int playerWidth, int playerHeight);
+        bool isBlockingElementExist(int x, int y, int width, int height);
+        bool isInteractiveElementExist(int x, int y, int width, int height);
+        int getBlockingNum();
     private:
         std::vector<std::shared_ptr<Coordinates>> blockingElements;
         std::vector<std::shared_ptr<Coordinates>> interactiveElements;

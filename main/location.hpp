@@ -23,7 +23,6 @@ namespace location{
 		void display();
 	}
 	void buttonListener();
-	// void collider();
     void drawBlockingElement(int x, int y, int width, int height);
 	namespace action{
 		void moveUp();
