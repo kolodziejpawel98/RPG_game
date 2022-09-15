@@ -13,8 +13,8 @@ void Collider::addInteractiveElement(int x, int y, int width, int height){
 }
 
 bool Collider::isBlockingElementCollided(int playerX, int playerY, int playerWidth, int playerHeight){
-    for(auto it : blockingElements) { //TODO find_if?
-        colliderDebugLine = static_cast<String>(it->x);
+    for(auto it : blockingElements) {
+        // colliderDebugLine = static_cast<String>(it->x);
         if(gb.collide.rectRect(playerX, playerY, playerWidth, playerHeight, it->x, it->y, it->width, it->height)){
             return true;
         }
@@ -31,16 +31,30 @@ bool Collider::isInteractiveElementCollided(int playerX, int playerY, int player
     return false;
 }
 
-int Collider::getBlockingNum(){
-    return blockingElements.size();
-}
-
 bool Collider::isBlockingElementExist(int x, int y, int width, int height){
-    auto iterator = std::find_if(blockingElements.begin(), blockingElements.end(), [&x, &y, &width, &height](std::shared_ptr<Coordinates> element){
+    auto iterator = std::find_if(
+                                blockingElements.begin(),
+                                blockingElements.end(), 
+                                [&x, &y, &width, &height](std::shared_ptr<Coordinates> element){
         return element->isCoordinateExist(x, y, width, height);
     });
 
     if(iterator != blockingElements.end()){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+bool Collider::isInteractiveElementExist(int x, int y, int width, int height){
+    auto iterator = std::find_if(
+                                interactiveElements.begin(),
+                                interactiveElements.end(), 
+                                [&x, &y, &width, &height](std::shared_ptr<Coordinates> element){
+        return element->isCoordinateExist(x, y, width, height);
+    });
+
+    if(iterator != interactiveElements.end()){
         return true;
     }else{
         return false;

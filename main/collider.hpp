@@ -41,7 +41,6 @@ class Collider{
         bool isInteractiveElementCollided(int playerX, int playerY, int playerWidth, int playerHeight);
         bool isBlockingElementExist(int x, int y, int width, int height);
         bool isInteractiveElementExist(int x, int y, int width, int height);
-        int getBlockingNum();
     private:
         std::vector<std::shared_ptr<Coordinates>> blockingElements;
         std::vector<std::shared_ptr<Coordinates>> interactiveElements;

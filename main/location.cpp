@@ -11,9 +11,20 @@ void location::screen::display(){
     gb.display.fillRect(0, 0, screenDimension::lowResWidth, screenDimension::lowResHeight);
     drawBlockingElement(12, 12, 2, 20);
     drawBlockingElement(12, 12, 20, 2);
+    drawInteractiveElement(20, 20, 5, 5);
+    gb.display.println(debugLine);
     location::buttonListener();
-    gb.display.setColor(RED);
+    gb.display.setColor(WHITE);
     gb.display.fillRect(heroMapCoordinates::x, heroMapCoordinates::y, heroMapCoordinates::width, heroMapCoordinates::height);
+    if(locationCollider.isInteractiveElementCollided(
+        heroMapCoordinates::x,
+        heroMapCoordinates::y,
+        heroMapCoordinates::width,
+        heroMapCoordinates::height)){
+        debugLine = "collision";
+    }else{
+        debugLine = "no";
+    }
 }
 
 void location::drawBlockingElement(int x, int y, int width, int height){
@@ -21,6 +32,14 @@ void location::drawBlockingElement(int x, int y, int width, int height){
     gb.display.fillRect(x, y, width, height);
     if(!locationCollider.isBlockingElementExist(x, y, width, height)){
         locationCollider.addBlockingElement(x, y, width, height);
+    }
+}
+
+void location::drawInteractiveElement(int x, int y, int width, int height){
+    gb.display.setColor(RED);
+    gb.display.fillRect(x, y, width, height);
+    if(!locationCollider.isInteractiveElementExist(x, y, width, height)){
+        locationCollider.addInteractiveElement(x, y, width, height);
     }
 }
 

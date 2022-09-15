@@ -24,6 +24,7 @@ namespace location{
 	}
 	void buttonListener();
     void drawBlockingElement(int x, int y, int width, int height);
+	void drawInteractiveElement(int x, int y, int width, int height);
 	namespace action{
 		void moveUp();
 		void moveDown();
